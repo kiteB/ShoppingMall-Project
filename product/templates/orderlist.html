@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}detail{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>{{orderlist.user}}님의 주문 내역입니다.</h1>
+    {% for order in user.order_set.all %}
+    <div class="order__box">
+        <h3>상품명 : {{order.product}} </h3>
+    </div>
+    <br>
+{% endfor %}
+</div>
+{% endblock %}

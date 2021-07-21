@@ -5,6 +5,7 @@ from product.models import Product
 # from django.core import paginator
 from django.core.paginator import Paginator
 from .models import *
+from order.models import Order
 
 
 def home(request):
@@ -52,3 +53,17 @@ def delete(request, id):
     delete_product = Product.objects.get(pk=id)
     delete_product.delete()
     return redirect('home')
+
+
+''' Order '''
+def create_order(request, id):
+    if request.method == 'GET':
+        order = Order()
+        order.product = get_object_or_404(Product, pk=id)
+
+        user_id = request.user.id
+        user = User.objects.get(id=user_id)
+        order.user = user
+        order.save()
+        # return redirect('home')
+        return render(request, 'orderlist.html', {'orderlist': order})
