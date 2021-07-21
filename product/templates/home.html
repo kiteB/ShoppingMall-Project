@@ -5,34 +5,32 @@
 <div class="container">
     <h1>[ 🦁 LION ]</h1>
     <hr>
-
-    <!-- 상품 리스트 -->
-    <div class="products">
-
+    <div class="contents">
+        <!-- 상품 리스트 -->
+        <div class="products">
+            {% for product in products %}
+                {% if user == product.author %}
+                <a href="{% url 'edit' product.id %}">
+                    <button>수정</button>
+                </a>
+                <a href="{% url 'delete' product.id %}">
+                    <button>삭제</button>
+                </a>
+                {% endif %}
+                <div class="product">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="사진" width="250" height="250"/>
+                    {% endif %}
+                    <span><strong>{{ product.product_name }}</strong></span>
+                    <span>{{ product.price }}</span><br>
+                    <a href="{% url 'detail' product.id %}">자세히 보기</a>
+                </div>
+            {% endfor %}
+        </div>
         <!-- 이전 페이지가 있다면 -->
         {% if products.has_previous %}
             <a href="?page={{products.previous_page_number}}">< </a>
         {% endif %}
-
-        {% for product in products %}
-            {% if user == product.author %}
-            <a href="{% url 'edit' product.id %}">
-                <button>수정</button>
-            </a>
-            <a href="{% url 'delete' product.id %}">
-                <button>삭제</button>
-            </a>
-            {% endif %}
-            <div class="product">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="사진" width="300" height="300"/>
-                {% endif %}
-                <span><strong>{{ product.product_name }}</strong></span>
-                <span>{{ product.price }}</span><br>
-                <a href="{% url 'detail' product.id %}">자세히 보기</a>
-            </div>
-        {% endfor %}
-
         <!-- 다음 페이지가 있다면 -->
         {% if products.has_next %}
             <a href="?page={{products.next_page_number}}"> > </a>
