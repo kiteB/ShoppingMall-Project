@@ -2,7 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from account.models import User
 from django.utils import timezone
 from product.models import Product
+# from django.core import paginator
+from django.core.paginator import Paginator
 from .models import *
+
+
+def home(request):
+    products = Product.objects.all()
+    paginator = Paginator(products, 3)
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    return render(request, 'home.html', {'products': page})
 
 
 def create(request):
@@ -17,11 +27,6 @@ def create(request):
         return redirect('home')
     else:
         return render(request, 'new.html')
-
-
-def home(request):
-    products = Product.objects.all()
-    return render(request, 'home.html', {'products': products})
 
 
 def detail(request, id):

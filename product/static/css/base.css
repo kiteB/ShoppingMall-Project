@@ -32,11 +32,19 @@ a {
     align-items: center;
     font-family: 'EliceDigitalBaeum_Bold';
 }
+.products {
+    display: flex;
+    flex-direction: row;
+}
 .product{
     display: flex;
+    width: 300px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid darkgray;
     border-radius: 5px;
+}
+.products a {
+    margin: 0 20px;
 }
