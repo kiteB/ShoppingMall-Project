@@ -6,6 +6,7 @@ class Product(models.Model):
     explanation = models.CharField(max_length=200)
     image = models.ImageField(upload_to="product/", blank=True, null=True)
     price = models.CharField(max_length=50)
+    user = models.ForeignKey('account.User', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.product_name

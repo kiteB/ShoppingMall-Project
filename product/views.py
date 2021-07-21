@@ -24,6 +24,9 @@ def create(request):
         new_product.price = request.POST['price']
         new_product.image = request.FILES.get('image')
 
+        user_id = request.user.id
+        user = User.objects.get(id=user_id)
+        new_product.user = user
         new_product.save()
         return redirect('home')
     else:

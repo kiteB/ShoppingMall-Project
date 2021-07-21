@@ -22,12 +22,19 @@
             <a href="{% url 'logout' %}">
                 로그아웃
             </a>
-            <a href="{% url 'mypage' %}">
-                마이페이지
-            </a>
+            <!-- admin일 경우에만 보일 메뉴 -->
+            {% if user.username == 'admin' %}
             <a href="{% url 'create' %}">
                 상품 등록하기
             </a>
+            {% else %}
+            <a href="{% url 'mypage' %}">
+                마이페이지
+            </a>
+            <a href="#">
+                주문 내역
+            </a>
+            {% endif %}
         </div>
         <!-- 로그인이 필요합니다. -->
         {% else %}
