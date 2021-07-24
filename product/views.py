@@ -60,13 +60,33 @@ def delete(request, id):
 
 ''' Order '''
 def create_order(request, id):
-    if request.method == 'GET':
-        order = Order()
-        order.product = get_object_or_404(Product, pk=id)
+    new_order = Order()
+    new_order.product = get_object_or_404(Product, pk=id)
+    user_id = request.user.id
+    user = User.objects.get(id=user_id)
+    new_order.user = user
+    new_order.save()
+    return redirect('order_finished')
 
-        user_id = request.user.id
-        user = User.objects.get(id=user_id)
-        order.user = user
-        order.save()
-        # return redirect('home')
-        return render(request, 'orderlist.html', {'orderlist': order})
+
+def order_list(request):
+    orders = Order.objects.all()
+    products = Product.objects.all()
+
+    # 해당 유저가 주문한 객체만 orders 에 저장
+    orders = orders.filter(user = request.user.id)
+
+    # for 문을 돌면서 이 유저가 가지고 있는 상품 result에 저장 후 return
+    result = []
+
+    for i in orders : 
+        for j in products : 
+            # 상품명으로 비교
+            if str(i) == str(j): 
+                result.append(j)
+                
+    return render(request, 'orderlist.html', {'orderlist': result})
+
+
+def order_finished(request):
+    return render(request, 'order_finished.html')

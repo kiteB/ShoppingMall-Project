@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 주문 완료 {% endblock %}
+<!-- {% block link %}{% static 'css/order_finished.css' %}{% endblock %} -->
+{% block content %}
+    <div id="order-div">
+        <p>주문이 완료되었습니다.</p>
+        <a href="{% url 'home' %}">
+            <button>메인 화면으로 돌아가기</button>
+        </a>
+    </div>
+{% endblock %}

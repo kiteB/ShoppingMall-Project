@@ -6,9 +6,12 @@
 }
 html {
     font-family: 'EliceDigitalBaeum_Bold';
-    /* background-color:lightslategray; */
     color: black;
     background-color: #EDEDED;
+}
+body {
+    display: flex;
+    flex-direction: column;
 }
 .header {
     display: flex;

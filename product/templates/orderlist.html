@@ -3,12 +3,16 @@
 {% block title %}detail{% endblock %}
 {% block content %}
 <div class="container">
-    <h1>{{orderlist.user}}님의 주문 내역입니다.</h1>
-    {% for order in user.order_set.all %}
-    <div class="order__box">
-        <h3>상품명 : {{order.product}} </h3>
-    </div>
-    <br>
-{% endfor %}
+    <h1>{{ user }}님의 주문 내역입니다.</h1>
+    {% for product in orderlist %}
+    <a href="{% url 'detail' product.id %}">
+        <div>
+            <p><img src = "{{ product.image.url }}" width="300px" height="300px"></p>
+            <p>상품명 : {{product.product_name}}</p> 
+            <p>상품 설명 : {{product.explanation}} </p>
+            <p>가격 : {{product.price}} </p>
+        </div>
+    </a>
+    {% endfor %}
 </div>
 {% endblock %}
