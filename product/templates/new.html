@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}new{% endblock %}
+{% block link %}{% static 'css/new.css' %}{% endblock %}
 {% block content %}
 <div class="container">
-    <h3>[ 상품 만들기 ]</h3>
-    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>상품명: <input type="text" name="product_name"></p>
-        <p>상품 설명 : <input type="text" name="explanation"></p>
-        <p>이미지 : <input type="file" name="image"></p>
-        <p>가격 : <input type="text" name="price" ></p>
-        <button type="submit">등록하기</button>
-    </form>
+    <div class="new-product">
+        <h3>[ 상품 만들기 ]</h3>
+        <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>상품명: <input type="text" name="product_name"></p>
+            <p>상품 설명 : <input type="text" name="explanation"></p>
+            <p>이미지 : <input type="file" name="image"></p>
+            <p>가격 : <input type="text" name="price" ></p>
+            <button type="submit">등록하기</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

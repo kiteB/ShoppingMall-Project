@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 700px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'EliceDigitalBaeum_Bold';
+    /* background-color: #EDEDED; */
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+input, button {
+    font-family: 'paybooc-Bold';
+}
+button {
+    background-color:#ecc61bbb;
+    border: 0px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin: 30px 0px;
+}
+#img {
+    margin-left: 120px;
+}
