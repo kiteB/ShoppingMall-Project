@@ -41,8 +41,10 @@
         </div>
         <!-- 로그인이 필요합니다. -->
         {% else %}
-        <div class="non-member">
+        <div id="login-message">
             <h2>로그인이 필요합니다.</h2>
+        </div>
+        <div class="non-member">
             <a href="{% url 'login' %}">
                 로그인
             </a>
