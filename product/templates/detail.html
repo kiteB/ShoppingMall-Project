@@ -25,7 +25,13 @@
                     <button>삭제</button>
                 </a>
             {% else %}
-                <a href="{% url 'create_order' product.id %}"><button>주문하기</button></a>
+                <!-- 회원일 경우 주문 가능 -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create_order' product.id %}"><button>주문하기</button></a>
+                <!-- 비회원일 경우 로그인 페이지로 이동 -->
+                {% else %}
+                    <a href="{% url 'login' %}"><button>주문하기</button></a>
+                {% endif %}
             {% endif %}
         </div>
     </div>
