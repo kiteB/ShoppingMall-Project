@@ -6,27 +6,22 @@
     justify-content: center;
     align-items: center;
     font-family: 'EliceDigitalBaeum_Bold';
-    font-size: 1.2rem;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
 }
 input, button {
     font-family: 'paybooc-Bold';
-    font-size: 1.1rem;
+}
+input {
+    margin-left: 10px;
 }
 button {
     background-color:#ecc61bbb;
     border: 0px;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 6px;
-    margin: 30px 30px 30px 0;
+    margin: 30px 0;
+    font-size: 1.2rem;
     font-family: 'paybooc-Bold';
 }
-#img {
-    margin-left: 150px;
+.container a {
+    margin: 0;
 }

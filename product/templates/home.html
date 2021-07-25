@@ -8,26 +8,28 @@
         <!-- 상품 리스트 -->
         <div class="products">
             {% for product in products %}
-                <div class="product">
-                    {% if product.image %}
-                        <img src="{{ product.image.url }}" alt="사진" width="250" height="250"/>
-                    {% endif %}
-                    <!-- <div class="info"> -->
-                    <span><strong>{{ product.product_name }}</strong></span>
-                    <span>{{ product.price }}</span><br>
-                    <a href="{% url 'detail' product.id %}">자세히 보기</a>
-                    <!-- </div> -->
-                </div>
+                <a href="{% url 'detail' product.id %}">
+                    <div class="product">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="사진" width="250" height="250"/>
+                        {% endif %}
+                        <span><strong>{{ product.product_name }}</strong></span>
+                        <span>{{ product.price }}</span><br>
+                    </div>
+                </a>
             {% endfor %}
         </div>
-        <!-- 이전 페이지가 있다면 -->
-        {% if products.has_previous %}
-            <a href="?page={{products.previous_page_number}}">< </a>
-        {% endif %}
-        <!-- 다음 페이지가 있다면 -->
-        {% if products.has_next %}
-            <a href="?page={{products.next_page_number}}"> > </a>
-        {% endif %}
+
+        <div class="page">
+            <!-- 이전 페이지가 있다면 -->
+            {% if products.has_previous %}
+                <a href="?page={{products.previous_page_number}}"> ← </a>
+            {% endif %}
+            <!-- 다음 페이지가 있다면 -->
+            {% if products.has_next %}
+                <a href="?page={{products.next_page_number}}"> → </a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
