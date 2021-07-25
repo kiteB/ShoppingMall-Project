@@ -21,9 +21,11 @@ input, button {
 button {
     background-color:#ecc61bbb;
     border: 0px;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 6px;
-    margin: 30px 0px;
+    margin: 30px 30px 30px 0;
+    font-size: 1.4rem;
+    font-family: 'paybooc-Bold';
 }
 #img {
     margin-left: 120px;

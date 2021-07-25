@@ -12,9 +12,11 @@
                     {% if product.image %}
                         <img src="{{ product.image.url }}" alt="사진" width="250" height="250"/>
                     {% endif %}
+                    <!-- <div class="info"> -->
                     <span><strong>{{ product.product_name }}</strong></span>
                     <span>{{ product.price }}</span><br>
                     <a href="{% url 'detail' product.id %}">자세히 보기</a>
+                    <!-- </div> -->
                 </div>
             {% endfor %}
         </div>

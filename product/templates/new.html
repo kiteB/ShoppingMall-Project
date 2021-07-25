@@ -4,7 +4,7 @@
 {% block link %}{% static 'css/new.css' %}{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="new-product">
+    <div class="product-info">
         <h3>[ 상품 만들기 ]</h3>
         <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
             {% csrf_token %}

@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}edit{% endblock %}
+{% block link %}{% static 'css/new.css' %}{% endblock %}
 {% block content %}
-    <form method="POST" action="{% url 'edit' product.id %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>상품명: <input type="text" name="product_name" value="{{ product.product_name }}"></p>
-        <p>상품 설명 : <input type="text" name="explanation" value="{{ product.explanation }}"></p>
-        <p>이미지 : <input type="file" name="image"></p>
-        <p>가격 : <input type="text" name="price" value="{{ product.price }}"></p>
-        <button>수정하기</button>
-    </form>
+<div class="container">
+    <div class="product-info">
+        <form method="POST" action="{% url 'edit' product.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>상품명: <input type="text" name="product_name" value="{{ product.product_name }}"></p>
+            <p>상품 설명 : <input type="text" name="explanation" value="{{ product.explanation }}"></p>
+            <p>이미지 : <input type="file" name="image"></p>
+            <p>가격 : <input type="text" name="price" value="{{ product.price }}"></p>
+            <button>수정하기</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
